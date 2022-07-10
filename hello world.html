@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<title> Первая проба </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<h1> Hello World </h1>
+<hr> 
+<div class="color circle cub">
+  <h2> GOOD MORNING, BITCHES </h2>
+</div>
+<button class="colorbutton">Всё получится</button>
+<div><a href="#">Ссылка</a> <a href="#">Ссылка</a> <a href="#">Ссылка</a> <a href="#">Ссылка</a> <a href="#">Ссылка</a> </div>
+<style> 
+h1 {font-size:20px; font-weight:700; font-family:"Lighthaus"; margin: 0 auto; width: 200px; color: white;}
+hr {border: 1px solid white; opacity: 30%; margin-top: 10px; box-shadow: 0.4em 0.4em 5px white;}
+.cub{
+  height: 300px;
+   width: 1200px; 
+   background: linear-gradient(96.98deg, #F73756 4.83%, #FF9900 87.12%);
+    margin: 0 auto; 
+    margin-top: 40px; 
+    box-shadow: inset 0 0 40px #00000050;
+     border-radius: 20px;
+      font-size:60px;
+       font-weight:900;
+        font-family:"Gilroy";
+         text-align: center; 
+         color: #ffffff; 
+         padding-top: 200px; 
+         transition: all 0.5s ease-in-out; 
+}
+
+button {
+  margin: 0 auto; 
+  margin-top: 30px; 
+  width: 140px; 
+  height: 40px; 
+  display: block; 
+  font-family: Gilroy; 
+  font-size: 16px; 
+  font-weight: 500; 
+  background-color: white; 
+  color: black;
+  border-color: #F73756;
+  margin-bottom: 30px;
+}
+
+a {text-decoration: none; 
+  color: white;  
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 24px;
+  width: 140px;
+  margin-right: 20px;
+}
+
+a:hover {color: #FF9900;}
+a:active {color: black;}
+body {background-color: darkgray; max-width: 1200px; margin: 0 auto;}
+
+h2 {margin: 0; background-color: black;
+  color: transparent;
+  text-shadow: 0px 1px 4px white;
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;}
+.color:hover {
+  background: linear-gradient(96.98deg, #FF9900 4.83%, #F73756 87.12%);
+}
+.circle:hover {
+  border-radius: 70%;
+}
+.colorbutton:hover {
+  background: #FF9900;
+  color: white;
+}
+.follow-cursor {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #0d6efd;
+  border-radius: 50%;
+  transform: translateY(-50%) translateX(-50%); /* центрируем кружок */
+  position: absolute; /* задаём абсолютное позиционирование, чтобы элемент не влиял на остальные элементы и его можно было бы позиционировать следом за курсором */
+  z-index: 999; /* чтобы элемент был над остальными элементами */
+  pointer-events: none; /* чтобы сквозь элемент можно было взаимодействовать с элементами, находящимися под ним */
+  transition: width 0.64s, height 0.64s, border-radius 0.64s, background 0.64s;
+}
+
+/* Активный класс для кружка при наведении на ссылку */
+.follow-cursor_active {
+  height: 128px;
+  width: 128px;
+  border-width: 2px;
+  background: rgba(13,110,253,0.32);
+}
+
+/* Скрываем декоративный элемент при ширине браузера меньше 992px */
+@media (max-width: 991.98px) {
+  .follow-cursor {
+    display: none;
+  }
+}
+html {cursor: url('cursor_5.cur'), auto;}
+
+</style>
+<div class="follow-cursor"></div>
+<script type="text/javascript">document.addEventListener('DOMContentLoaded', () => {
+
+  const followCursor = () => { // объявляем функцию followCursor
+    const el = document.querySelector('.follow-cursor') // ищем элемент, который будет следовать за курсором
+
+    window.addEventListener('mousemove', e => { // при движении курсора
+      const target = e.target // определяем, где находится курсор
+      if (!target) return
+
+      if (target.closest('a')) { // если курсор наведён на ссылку
+        el.classList.add('follow-cursor_active') // элементу добавляем активный класс
+      } else { // иначе
+        el.classList.remove('follow-cursor_active') // удаляем активный класс
+      }
+
+      el.style.left = e.pageX + 'px' // задаём элементу позиционирование слева
+      el.style.top = e.pageY + 'px' // задаём элементу позиционирование сверху
+    })
+  }
+
+  followCursor() // вызываем функцию followCursor
+
+})
+</script>
+</body>
+</html>
